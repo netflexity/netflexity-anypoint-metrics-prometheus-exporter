@@ -46,9 +46,7 @@ anypoint:
     clientSecret: ${ANYPOINT_CLIENT_SECRET:}
   organizationId: ${ANYPOINT_ORG_ID:}
   autoDiscovery: ${ANYPOINT_AUTO_DISCOVERY:true}
-  environments:
-    - id: ${ANYPOINT_ENV_ID:}
-      name: ${ANYPOINT_ENV_NAME:Development}
+  environments: []
   regions:
     - us-east-1
   scrape:
