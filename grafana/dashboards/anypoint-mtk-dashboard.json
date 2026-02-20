@@ -44,7 +44,7 @@
           "refId": "A",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         },
         {
@@ -53,7 +53,7 @@
           "refId": "B",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         },
         {
@@ -62,7 +62,7 @@
           "refId": "C",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         }
       ],
@@ -98,7 +98,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "uid": "nfx-prometheus"
+        "uid": "prometheus"
       }
     },
     {
@@ -112,7 +112,7 @@
           "refId": "A",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         },
         {
@@ -121,7 +121,7 @@
           "refId": "B",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         },
         {
@@ -130,7 +130,7 @@
           "refId": "C",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         }
       ],
@@ -142,7 +142,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "uid": "nfx-prometheus"
+        "uid": "prometheus"
       }
     },
     {
@@ -156,7 +156,7 @@
           "refId": "A",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         }
       ],
@@ -219,7 +219,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "uid": "nfx-prometheus"
+        "uid": "prometheus"
       }
     },
     {
@@ -233,7 +233,7 @@
           "refId": "A",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         }
       ],
@@ -262,7 +262,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "uid": "nfx-prometheus"
+        "uid": "prometheus"
       }
     },
     {
@@ -276,7 +276,7 @@
           "refId": "A",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         },
         {
@@ -285,7 +285,7 @@
           "refId": "B",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         }
       ],
@@ -297,7 +297,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "uid": "nfx-prometheus"
+        "uid": "prometheus"
       }
     },
     {
@@ -311,7 +311,7 @@
           "refId": "A",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         }
       ],
@@ -323,7 +323,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "uid": "nfx-prometheus"
+        "uid": "prometheus"
       }
     },
     {
@@ -337,7 +337,7 @@
           "refId": "A",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         }
       ],
@@ -349,7 +349,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "uid": "nfx-prometheus"
+        "uid": "prometheus"
       }
     },
     {
@@ -363,7 +363,7 @@
           "refId": "A",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         }
       ],
@@ -375,7 +375,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "uid": "nfx-prometheus"
+        "uid": "prometheus"
       }
     },
     {
@@ -389,7 +389,7 @@
           "refId": "A",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         }
       ],
@@ -401,7 +401,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "uid": "nfx-prometheus"
+        "uid": "prometheus"
       }
     },
     {
@@ -415,7 +415,7 @@
           "refId": "A",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         }
       ],
@@ -432,7 +432,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "uid": "nfx-prometheus"
+        "uid": "prometheus"
       }
     },
     {
@@ -446,7 +446,7 @@
           "refId": "A",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         },
         {
@@ -455,7 +455,7 @@
           "refId": "B",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         },
         {
@@ -464,7 +464,7 @@
           "refId": "C",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         }
       ],
@@ -476,7 +476,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "uid": "nfx-prometheus"
+        "uid": "prometheus"
       }
     },
     {
@@ -490,7 +490,7 @@
           "refId": "A",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         },
         {
@@ -499,7 +499,7 @@
           "refId": "B",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         }
       ],
@@ -534,7 +534,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "uid": "nfx-prometheus"
+        "uid": "prometheus"
       }
     },
     {
@@ -548,7 +548,7 @@
           "refId": "A",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         },
         {
@@ -557,7 +557,7 @@
           "refId": "B",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         },
         {
@@ -566,7 +566,7 @@
           "refId": "C",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         }
       ],
@@ -578,7 +578,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "uid": "nfx-prometheus"
+        "uid": "prometheus"
       }
     },
     {
@@ -592,7 +592,7 @@
           "refId": "A",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         }
       ],
@@ -617,7 +617,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "uid": "nfx-prometheus"
+        "uid": "prometheus"
       }
     },
     {
@@ -631,7 +631,7 @@
           "refId": "A",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         },
         {
@@ -640,7 +640,7 @@
           "refId": "B",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         },
         {
@@ -649,7 +649,7 @@
           "refId": "C",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         }
       ],
@@ -661,7 +661,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "uid": "nfx-prometheus"
+        "uid": "prometheus"
       }
     },
     {
@@ -675,7 +675,7 @@
           "refId": "A",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         },
         {
@@ -684,7 +684,7 @@
           "refId": "B",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         },
         {
@@ -693,7 +693,7 @@
           "refId": "C",
           "datasource": {
             "type": "prometheus",
-            "uid": "nfx-prometheus"
+            "uid": "prometheus"
           }
         }
       ],
@@ -705,7 +705,7 @@
       },
       "datasource": {
         "type": "prometheus",
-        "uid": "nfx-prometheus"
+        "uid": "prometheus"
       }
     }
   ],
