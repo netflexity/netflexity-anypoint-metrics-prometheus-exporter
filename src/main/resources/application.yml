@@ -50,7 +50,7 @@ anypoint:
   regions:
     - us-east-1
   scrape:
-    intervalSeconds: 60
+    intervalSeconds: ${SCRAPE_INTERVAL_SECONDS:60}
     periodSeconds: 600
     enabled: true
     # MTK Collector intervals (in seconds)
