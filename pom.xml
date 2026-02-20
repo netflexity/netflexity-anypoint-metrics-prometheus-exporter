@@ -12,13 +12,13 @@
     </parent>
 
     <groupId>com.netflexity</groupId>
-    <artifactId>anypoint-mq-prometheus-exporter</artifactId>
+    <artifactId>anypoint-metrics-prometheus-exporter</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Anypoint MQ Prometheus Exporter</name>
-    <description>Prometheus exporter for MuleSoft Anypoint MQ metrics</description>
-    <url>https://github.com/netflexity/anypoint-mq-prometheus-exporter</url>
+    <name>Anypoint Metrics Prometheus Exporter</name>
+    <description>Prometheus exporter for MuleSoft Anypoint Platform metrics (MTK port)</description>
+    <url>https://bitbucket.org/netflexity/anypoint-metrics-prometheus-exporter</url>
 
     <properties>
         <java.version>17</java.version>

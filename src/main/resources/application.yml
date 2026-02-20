@@ -5,7 +5,7 @@ server:
 
 spring:
   application:
-    name: anypoint-mq-prometheus-exporter
+    name: anypoint-metrics-prometheus-exporter
   main:
     lazy-initialization: false
   autoconfigure:
@@ -55,6 +55,14 @@ anypoint:
     intervalSeconds: 60
     periodSeconds: 600
     enabled: true
+    # MTK Collector intervals (in seconds)
+    app-inventory-interval-seconds: 300        # 5 minutes - app inventory changes slowly
+    dashboard-stats-interval-seconds: 120      # 2 minutes - dashboard stats need frequent updates
+    api-manager-interval-seconds: 600          # 10 minutes - API manager changes slowly
+    api-analytics-interval-seconds: 300        # 5 minutes - analytics need regular updates
+    metering-usage-interval-seconds: 1800      # 30 minutes - usage data is aggregated
+    optimization-report-interval-seconds: 86400  # 24 hours - daily optimization analysis
+    platform-metrics-interval-seconds: 900    # 15 minutes - platform metrics
   http:
     connectTimeoutSeconds: 30
     readTimeoutSeconds: 60

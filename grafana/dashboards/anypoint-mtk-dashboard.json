@@ -1,0 +1,389 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Anypoint Metrics Toolkit (MTK) Dashboard",
+    "tags": ["anypoint", "mulesoft", "mtk"],
+    "style": "dark",
+    "timezone": "browser",
+    "editable": true,
+    "hideControls": false,
+    "graphTooltip": 1,
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {
+      "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
+    },
+    "refresh": "30s",
+    "schemaVersion": 30,
+    "version": 1,
+    "links": [],
+    "panels": [
+      {
+        "id": 1,
+        "title": "Application Status Overview",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "sum(anypoint_app_status)",
+            "legendFormat": "Running Apps",
+            "refId": "A"
+          },
+          {
+            "expr": "sum(anypoint_app_vcores)",
+            "legendFormat": "Total vCores",
+            "refId": "B"
+          },
+          {
+            "expr": "sum(anypoint_app_workers)",
+            "legendFormat": "Total Workers",
+            "refId": "C"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "custom": {"displayMode": "list", "orientation": "horizontal"},
+            "mappings": [],
+            "thresholds": {
+              "steps": [
+                {"color": "green", "value": null},
+                {"color": "red", "value": 80}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "API Manager Overview",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "sum(anypoint_api_count)",
+            "legendFormat": "Total APIs",
+            "refId": "A"
+          },
+          {
+            "expr": "sum(anypoint_api_status)",
+            "legendFormat": "Active APIs",
+            "refId": "B"
+          },
+          {
+            "expr": "sum(anypoint_api_policy_count)",
+            "legendFormat": "Total Policies",
+            "refId": "C"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}
+      },
+      {
+        "id": 3,
+        "title": "Application Status by Environment",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "anypoint_app_status",
+            "legendFormat": "{{app_name}} ({{environment}})",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 24, "x": 0, "y": 8},
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "linear",
+              "barAlignment": 0,
+              "lineWidth": 2,
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "spanNulls": false,
+              "insertNulls": false,
+              "showPoints": "never",
+              "pointSize": 5,
+              "stacking": {"mode": "none", "group": "A"},
+              "axisPlacement": "auto",
+              "axisLabel": "",
+              "scaleDistribution": {"type": "linear"},
+              "hideFrom": {"legend": false, "tooltip": false, "vis": false},
+              "thresholdsStyle": {"mode": "off"}
+            },
+            "unit": "short",
+            "min": 0,
+            "max": 1,
+            "thresholds": {
+              "steps": [
+                {"color": "red", "value": null},
+                {"color": "green", "value": 1}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 4,
+        "title": "vCores Usage by Application",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "anypoint_app_vcores",
+            "legendFormat": "{{app_name}} ({{environment}})",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16},
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "unit": "short",
+            "custom": {
+              "drawStyle": "line",
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "fillOpacity": 10,
+              "stacking": {"mode": "none"}
+            }
+          }
+        }
+      },
+      {
+        "id": 5,
+        "title": "Request Rate & Response Time",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "rate(anypoint_app_request_count[5m])",
+            "legendFormat": "{{app_name}} - Requests/sec",
+            "refId": "A"
+          },
+          {
+            "expr": "anypoint_app_response_time_avg",
+            "legendFormat": "{{app_name}} - Avg Response Time",
+            "refId": "B"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 16}
+      },
+      {
+        "id": 6,
+        "title": "API Analytics - Request Volume",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "increase(anypoint_api_requests_total[1h])",
+            "legendFormat": "{{api_name}} v{{api_version}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 24}
+      },
+      {
+        "id": 7,
+        "title": "Policy Violations",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "increase(anypoint_api_policy_violations_total[1h])",
+            "legendFormat": "{{api_name}} - {{policy_name}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 24}
+      },
+      {
+        "id": 8,
+        "title": "Metering - Message Counts",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "anypoint_metering_mule_message_count",
+            "legendFormat": "{{environment}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 32}
+      },
+      {
+        "id": 9,
+        "title": "Metering - Flow Counts",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "anypoint_metering_mule_flow_count",
+            "legendFormat": "{{environment}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 32}
+      },
+      {
+        "id": 10,
+        "title": "Data Throughput",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "anypoint_metering_total_data_throughput",
+            "legendFormat": "{{environment}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 40},
+        "fieldConfig": {
+          "defaults": {
+            "unit": "decbytes"
+          }
+        }
+      },
+      {
+        "id": 11,
+        "title": "Anypoint MQ Usage",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "anypoint_metering_anypoint_mq_requests",
+            "legendFormat": "MQ Requests - {{environment}}",
+            "refId": "A"
+          },
+          {
+            "expr": "anypoint_metering_anypoint_mq_messages_delivered",
+            "legendFormat": "Messages Delivered - {{environment}}",
+            "refId": "B"
+          },
+          {
+            "expr": "anypoint_metering_anypoint_mq_messages_received",
+            "legendFormat": "Messages Received - {{environment}}",
+            "refId": "C"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 40}
+      },
+      {
+        "id": 12,
+        "title": "Optimization Report",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "sum(anypoint_optimization_oversized_apps)",
+            "legendFormat": "Oversized Apps",
+            "refId": "A"
+          },
+          {
+            "expr": "sum(anypoint_optimization_potential_savings_vcores)",
+            "legendFormat": "Potential vCore Savings",
+            "refId": "B"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 48},
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "thresholds"},
+            "thresholds": {
+              "steps": [
+                {"color": "green", "value": null},
+                {"color": "yellow", "value": 5},
+                {"color": "red", "value": 10}
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": 13,
+        "title": "Platform Overview",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "anypoint_platform_environments_count",
+            "legendFormat": "Environments",
+            "refId": "A"
+          },
+          {
+            "expr": "anypoint_platform_users_count",
+            "legendFormat": "Users",
+            "refId": "B"
+          },
+          {
+            "expr": "sum(anypoint_alerts_total)",
+            "legendFormat": "Total Alerts",
+            "refId": "C"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 48}
+      },
+      {
+        "id": 14,
+        "title": "Alert Activity",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "increase(anypoint_alerts_triggered[1h])",
+            "legendFormat": "{{environment}}",
+            "refId": "A"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 24, "x": 0, "y": 56},
+        "fieldConfig": {
+          "defaults": {
+            "color": {"mode": "palette-classic"},
+            "custom": {
+              "drawStyle": "bars",
+              "barAlignment": 0,
+              "lineWidth": 1,
+              "fillOpacity": 100
+            }
+          }
+        }
+      },
+      {
+        "id": 15,
+        "title": "Business Metrics",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "anypoint_business_total_integrations",
+            "legendFormat": "Total Integrations",
+            "refId": "A"
+          },
+          {
+            "expr": "anypoint_business_active_partnerships",
+            "legendFormat": "Active Partnerships",
+            "refId": "B"
+          },
+          {
+            "expr": "anypoint_business_data_volumes_gb",
+            "legendFormat": "Data Volume (GB)",
+            "refId": "C"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 64}
+      },
+      {
+        "id": 16,
+        "title": "SDLC Metrics",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "anypoint_sdlc_deployments_per_week",
+            "legendFormat": "Deployments/Week",
+            "refId": "A"
+          },
+          {
+            "expr": "anypoint_sdlc_lead_time_hours",
+            "legendFormat": "Lead Time (Hours)",
+            "refId": "B"
+          },
+          {
+            "expr": "anypoint_sdlc_change_failure_rate * 100",
+            "legendFormat": "Change Failure Rate (%)",
+            "refId": "C"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 64}
+      }
+    ]
+  }
+}

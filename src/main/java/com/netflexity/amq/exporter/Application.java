@@ -6,17 +6,26 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
- * Main application class for the Anypoint MQ Prometheus Exporter.
+ * Main application class for the Anypoint Metrics Prometheus Exporter.
  * 
- * This Spring Boot application polls MuleSoft Anypoint MQ Stats API
- * and exposes queue and exchange metrics in Prometheus format.
+ * This Spring Boot application implements the complete Netflexity Metrics Toolkit (MTK)
+ * functionality, ported from MuleSoft/DataWeave to Java Spring Boot with Prometheus metrics.
+ * 
+ * MTK Modules:
+ * - CloudHub App Inventory (CH1 & CH2)
+ * - Dashboard Statistics
+ * - API Manager metrics
+ * - API Analytics
+ * - Metering/Usage (24 meter types)
+ * - Optimization Reports
+ * - Platform, Business, SDLC, and Alerts metrics
  * 
  * Features:
  * - Prometheus metrics at /actuator/prometheus
  * - Health checks at /actuator/health
- * - Scheduled metrics collection
- * - Multi-environment and multi-region support
- * - Authentication via username/password or Connected App
+ * - Scheduled collectors with configurable intervals
+ * - Multi-environment auto-discovery
+ * - Connected App OAuth2 authentication
  * 
  * @author Netflexity
  * @version 1.0.0
@@ -27,8 +36,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class Application {
 
     public static void main(String[] args) {
-        log.info("Starting Anypoint MQ Prometheus Exporter...");
+        log.info("Starting Anypoint Metrics Prometheus Exporter (MTK port)...");
         SpringApplication.run(Application.class, args);
-        log.info("Anypoint MQ Prometheus Exporter started successfully!");
+        log.info("Anypoint Metrics Prometheus Exporter started successfully!");
     }
 }
