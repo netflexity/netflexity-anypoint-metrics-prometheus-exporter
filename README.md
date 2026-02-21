@@ -1,7 +1,7 @@
 <p align="center">
   <h1 align="center">Anypoint Metrics Prometheus Exporter</h1>
   <p align="center">
-    Complete metrics toolkit for MuleSoft Anypoint Platform — MTK port to Spring Boot Prometheus exporter.
+    Complete metrics toolkit for MuleSoft Anypoint Platform - MTK port to Spring Boot Prometheus exporter.
   </p>
 </p>
 
@@ -266,6 +266,19 @@ This exporter is a direct port of the MuleSoft Metrics Toolkit (MTK) modules:
 10. **Alerts** → `PlatformMetricsCollector`
 
 All DataWeave transformations have been converted to Java with equivalent logic.
+
+## Shared Library
+
+This exporter shares its core infrastructure with the [Anypoint MQ Prometheus Exporter](https://bitbucket.org/netflexity/anypoint-mq-prometheus-exporter) via the [`anypoint-common`](https://bitbucket.org/netflexity/netflexity-anypoint-common) library.
+
+The common library provides:
+- **OAuth2 authentication** (Connected App + username/password) with token caching
+- **Environment auto-discovery** from Anypoint Platform
+- **Monitor evaluation engine** (queue depth, DLQ, throughput anomalies, health scores)
+- **5 notification channels** (Slack, PagerDuty, Email, Teams, Webhook)
+- **REST API controllers** (`/api/status`, `/api/monitors`, `/api/health-scores`)
+- **Spring Boot Actuator health indicator** for Anypoint connectivity
+- **License gating** (FREE/PRO tier feature control)
 
 ## Contributing
 
