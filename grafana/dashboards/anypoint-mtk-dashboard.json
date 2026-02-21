@@ -39,7 +39,7 @@
       "type": "stat",
       "targets": [
         {
-          "expr": "sum(anypoint_app_status)",
+          "expr": "sum(anypoint_app_status{environment=~\"$environment\"})",
           "legendFormat": "Running Apps",
           "refId": "A",
           "datasource": {
@@ -48,7 +48,7 @@
           }
         },
         {
-          "expr": "sum(anypoint_app_vcores)",
+          "expr": "sum(anypoint_app_vcores{environment=~\"$environment\"})",
           "legendFormat": "Total vCores",
           "refId": "B",
           "datasource": {
@@ -57,7 +57,7 @@
           }
         },
         {
-          "expr": "sum(anypoint_app_workers)",
+          "expr": "sum(anypoint_app_workers{environment=~\"$environment\"})",
           "legendFormat": "Total Workers",
           "refId": "C",
           "datasource": {
@@ -107,7 +107,7 @@
       "type": "stat",
       "targets": [
         {
-          "expr": "sum(anypoint_api_count)",
+          "expr": "sum(anypoint_api_count{environment=~\"$environment\"})",
           "legendFormat": "Total APIs",
           "refId": "A",
           "datasource": {
@@ -116,7 +116,7 @@
           }
         },
         {
-          "expr": "sum(anypoint_api_status)",
+          "expr": "sum(anypoint_api_status{environment=~\"$environment\"})",
           "legendFormat": "Active APIs",
           "refId": "B",
           "datasource": {
@@ -125,7 +125,7 @@
           }
         },
         {
-          "expr": "sum(anypoint_api_policy_count)",
+          "expr": "sum(anypoint_api_policy_count{environment=~\"$environment\"})",
           "legendFormat": "Total Policies",
           "refId": "C",
           "datasource": {
@@ -151,7 +151,7 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "anypoint_app_status",
+          "expr": "anypoint_app_status{environment=~\"$environment\"}",
           "legendFormat": "{{app_name}} ({{environment}})",
           "refId": "A",
           "datasource": {
@@ -228,7 +228,7 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "anypoint_app_vcores",
+          "expr": "anypoint_app_vcores{environment=~\"$environment\"}",
           "legendFormat": "{{app_name}} ({{environment}})",
           "refId": "A",
           "datasource": {
@@ -271,7 +271,7 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "rate(anypoint_app_request_count[5m])",
+          "expr": "rate(anypoint_app_request_count{environment=~\"$environment\"}[5m])",
           "legendFormat": "{{app_name}} - Requests/sec",
           "refId": "A",
           "datasource": {
@@ -280,7 +280,7 @@
           }
         },
         {
-          "expr": "anypoint_app_response_time_avg",
+          "expr": "anypoint_app_response_time_avg{environment=~\"$environment\"}",
           "legendFormat": "{{app_name}} - Avg Response Time",
           "refId": "B",
           "datasource": {
@@ -306,7 +306,7 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "increase(anypoint_api_requests_total[1h])",
+          "expr": "increase(anypoint_api_requests_total{environment=~\"$environment\"}[1h])",
           "legendFormat": "{{api_name}} v{{api_version}}",
           "refId": "A",
           "datasource": {
@@ -332,7 +332,7 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "increase(anypoint_api_policy_violations_total[1h])",
+          "expr": "increase(anypoint_api_policy_violations_total{environment=~\"$environment\"}[1h])",
           "legendFormat": "{{api_name}} - {{policy_name}}",
           "refId": "A",
           "datasource": {
@@ -358,7 +358,7 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "anypoint_metering_mule_message_count",
+          "expr": "anypoint_metering_mule_message_count{environment=~\"$environment\"}",
           "legendFormat": "{{environment}}",
           "refId": "A",
           "datasource": {
@@ -384,7 +384,7 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "anypoint_metering_mule_flow_count",
+          "expr": "anypoint_metering_mule_flow_count{environment=~\"$environment\"}",
           "legendFormat": "{{environment}}",
           "refId": "A",
           "datasource": {
@@ -410,7 +410,7 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "anypoint_metering_total_data_throughput",
+          "expr": "anypoint_metering_total_data_throughput{environment=~\"$environment\"}",
           "legendFormat": "{{environment}}",
           "refId": "A",
           "datasource": {
@@ -441,7 +441,7 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "anypoint_metering_anypoint_mq_requests",
+          "expr": "anypoint_metering_anypoint_mq_requests{environment=~\"$environment\"}",
           "legendFormat": "MQ Requests - {{environment}}",
           "refId": "A",
           "datasource": {
@@ -450,7 +450,7 @@
           }
         },
         {
-          "expr": "anypoint_metering_anypoint_mq_messages_delivered",
+          "expr": "anypoint_metering_anypoint_mq_messages_delivered{environment=~\"$environment\"}",
           "legendFormat": "Messages Delivered - {{environment}}",
           "refId": "B",
           "datasource": {
@@ -459,7 +459,7 @@
           }
         },
         {
-          "expr": "anypoint_metering_anypoint_mq_messages_received",
+          "expr": "anypoint_metering_anypoint_mq_messages_received{environment=~\"$environment\"}",
           "legendFormat": "Messages Received - {{environment}}",
           "refId": "C",
           "datasource": {
@@ -485,7 +485,7 @@
       "type": "stat",
       "targets": [
         {
-          "expr": "sum(anypoint_optimization_oversized_apps)",
+          "expr": "sum(anypoint_optimization_oversized_apps{environment=~\"$environment\"})",
           "legendFormat": "Oversized Apps",
           "refId": "A",
           "datasource": {
@@ -494,7 +494,7 @@
           }
         },
         {
-          "expr": "sum(anypoint_optimization_potential_savings_vcores)",
+          "expr": "sum(anypoint_optimization_potential_savings_vcores{environment=~\"$environment\"})",
           "legendFormat": "Potential vCore Savings",
           "refId": "B",
           "datasource": {
@@ -543,7 +543,7 @@
       "type": "stat",
       "targets": [
         {
-          "expr": "anypoint_platform_environments_count",
+          "expr": "anypoint_platform_environments_count{environment=~\"$environment\"}",
           "legendFormat": "Environments",
           "refId": "A",
           "datasource": {
@@ -552,7 +552,7 @@
           }
         },
         {
-          "expr": "anypoint_platform_users_count",
+          "expr": "anypoint_platform_users_count{environment=~\"$environment\"}",
           "legendFormat": "Users",
           "refId": "B",
           "datasource": {
@@ -561,7 +561,7 @@
           }
         },
         {
-          "expr": "sum(anypoint_alerts_total)",
+          "expr": "sum(anypoint_alerts_total{environment=~\"$environment\"})",
           "legendFormat": "Total Alerts",
           "refId": "C",
           "datasource": {
@@ -587,7 +587,7 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "increase(anypoint_alerts_triggered[1h])",
+          "expr": "increase(anypoint_alerts_triggered{environment=~\"$environment\"}[1h])",
           "legendFormat": "{{environment}}",
           "refId": "A",
           "datasource": {
@@ -626,7 +626,7 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "anypoint_business_total_integrations",
+          "expr": "anypoint_business_total_integrations{environment=~\"$environment\"}",
           "legendFormat": "Total Integrations",
           "refId": "A",
           "datasource": {
@@ -635,7 +635,7 @@
           }
         },
         {
-          "expr": "anypoint_business_active_partnerships",
+          "expr": "anypoint_business_active_partnerships{environment=~\"$environment\"}",
           "legendFormat": "Active Partnerships",
           "refId": "B",
           "datasource": {
@@ -644,7 +644,7 @@
           }
         },
         {
-          "expr": "anypoint_business_data_volumes_gb",
+          "expr": "anypoint_business_data_volumes_gb{environment=~\"$environment\"}",
           "legendFormat": "Data Volume (GB)",
           "refId": "C",
           "datasource": {
@@ -670,7 +670,7 @@
       "type": "timeseries",
       "targets": [
         {
-          "expr": "anypoint_sdlc_deployments_per_week",
+          "expr": "anypoint_sdlc_deployments_per_week{environment=~\"$environment\"}",
           "legendFormat": "Deployments/Week",
           "refId": "A",
           "datasource": {
@@ -679,7 +679,7 @@
           }
         },
         {
-          "expr": "anypoint_sdlc_lead_time_hours",
+          "expr": "anypoint_sdlc_lead_time_hours{environment=~\"$environment\"}",
           "legendFormat": "Lead Time (Hours)",
           "refId": "B",
           "datasource": {
@@ -688,7 +688,7 @@
           }
         },
         {
-          "expr": "anypoint_sdlc_change_failure_rate * 100",
+          "expr": "anypoint_sdlc_change_failure_rate{environment=~\"$environment\"} * 100",
           "legendFormat": "Change Failure Rate (%)",
           "refId": "C",
           "datasource": {
@@ -709,5 +709,43 @@
       }
     }
   ],
-  "uid": "anypoint-mtk"
+  "uid": "anypoint-mtk",
+  "templating": {
+    "list": [
+      {
+        "name": "organization",
+        "type": "query",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "query": "label_values(anypoint_app_status, organization_id)",
+        "refresh": 2,
+        "includeAll": true,
+        "multi": false,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "label": "Organization"
+      },
+      {
+        "name": "environment",
+        "type": "query",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "query": "label_values(anypoint_app_status, environment)",
+        "refresh": 2,
+        "includeAll": true,
+        "multi": true,
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "label": "Environment"
+      }
+    ]
+  }
 }
