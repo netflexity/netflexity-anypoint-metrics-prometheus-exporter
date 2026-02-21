@@ -84,7 +84,13 @@ public class EnvironmentDiscoveryService {
                 discoveredEnvironments.clear();
                 allEnvs.forEach(discoveredEnvironments::addAll);
                 
-                // Update the config with discovered environments
+                // Update the config with discovered org and environments
+                if (!discoveredOrgs.isEmpty() && (anypointConfig.getOrganizationId() == null || anypointConfig.getOrganizationId().isEmpty())) {
+                    // Set the first discovered org as the primary org ID
+                    String primaryOrgId = discoveredOrgs.keySet().iterator().next();
+                    anypointConfig.setOrganizationId(primaryOrgId);
+                    log.info("Auto-set organizationId to: {}", primaryOrgId);
+                }
                 if (!discoveredEnvironments.isEmpty()) {
                     anypointConfig.setEnvironments(new ArrayList<>(discoveredEnvironments));
                     log.info("Discovery complete. Found {} organizations, {} environments",
