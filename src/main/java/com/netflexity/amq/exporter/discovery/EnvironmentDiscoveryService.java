@@ -37,6 +37,7 @@ public class EnvironmentDiscoveryService {
     private final Map<String, OrgInfo> discoveredOrgs = new ConcurrentHashMap<>();
     private final List<AnypointConfig.Environment> discoveredEnvironments = Collections.synchronizedList(new ArrayList<>());
     private volatile boolean discoveryComplete = false;
+    private volatile String rootOrgId = null;
 
     public EnvironmentDiscoveryService(WebClient webClient, AnypointAuthClient authClient, AnypointConfig anypointConfig) {
         this.webClient = webClient;
@@ -87,9 +88,9 @@ public class EnvironmentDiscoveryService {
                 // Update the config with discovered org and environments
                 if (!discoveredOrgs.isEmpty() && (anypointConfig.getOrganizationId() == null || anypointConfig.getOrganizationId().isEmpty())) {
                     // Set the first discovered org as the primary org ID
-                    String primaryOrgId = discoveredOrgs.keySet().iterator().next();
+                    String primaryOrgId = rootOrgId != null ? rootOrgId : discoveredOrgs.keySet().iterator().next();
                     anypointConfig.setOrganizationId(primaryOrgId);
-                    log.info("Auto-set organizationId to: {}", primaryOrgId);
+                    log.info("Auto-set organizationId to: {} ({})", primaryOrgId, discoveredOrgs.get(primaryOrgId).getName());
                 }
                 if (!discoveredEnvironments.isEmpty()) {
                     anypointConfig.setEnvironments(new ArrayList<>(discoveredEnvironments));
@@ -131,6 +132,7 @@ public class EnvironmentDiscoveryService {
                     OrgInfo info = new OrgInfo(rootOrg.getId(), rootOrg.getName());
                     orgs.add(info);
                     discoveredOrgs.put(rootOrg.getId(), info);
+                    rootOrgId = rootOrg.getId();
                     log.info("Discovered root org: {} ({})", rootOrg.getName(), rootOrg.getId());
                     
                     // Add sub-orgs from memberOfOrganizations (has actual names)
