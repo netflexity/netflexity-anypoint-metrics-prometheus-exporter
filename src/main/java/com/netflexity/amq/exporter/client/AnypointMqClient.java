@@ -124,7 +124,46 @@ public class AnypointMqClient {
     }
 
     /**
-     * Get statistics for a specific queue
+     * Get real-time queue depth from Admin API (no lag).
+     * Returns messagesInQueue and messagesInFlight directly.
+     */
+    public Mono<QueueStats> getQueueDepth(String environmentId, String region, String queueId) {
+        log.debug("Getting real-time depth for queue {} in environment {} region {}", queueId, environmentId, region);
+        
+        String url = String.format("%s/mq/admin/api/v1/organizations/%s/environments/%s/regions/%s/queues/%s",
+                anypointConfig.getBaseUrl(),
+                anypointConfig.getOrganizationId(),
+                environmentId,
+                region,
+                queueId);
+
+        return authClient.getAccessToken()
+                .flatMap(token -> webClient.get()
+                        .uri(url)
+                        .header("Authorization", token.getAuthorizationHeader())
+                        .retrieve()
+                        .onStatus(HttpStatusCode::isError, response -> handleApiError(response, "get queue depth for " + queueId))
+                        .bodyToMono(java.util.Map.class)
+                        .map(body -> {
+                            QueueStats stats = new QueueStats();
+                            stats.setQueueId(queueId);
+                            Object inQueue = body.get("messagesInQueue");
+                            Object inFlight = body.get("messagesInFlight");
+                            if (inQueue instanceof Number) stats.setMessagesInQueue(((Number) inQueue).longValue());
+                            if (inFlight instanceof Number) stats.setMessagesInFlight(((Number) inFlight).longValue());
+                            return stats;
+                        }))
+                .retryWhen(Retry.backoff(anypointConfig.getHttp().getMaxRetries(), Duration.ofSeconds(1))
+                        .filter(this::isRetryableError))
+                .timeout(Duration.ofSeconds(anypointConfig.getHttp().getReadTimeoutSeconds()))
+                .doOnSuccess(stats -> log.debug("Real-time depth for queue {}: inQueue={}, inFlight={}", queueId, 
+                        stats != null ? stats.getMessagesInQueue() : "null",
+                        stats != null ? stats.getMessagesInFlight() : "null"))
+                .doOnError(error -> log.error("Failed to get depth for queue {}: {}", queueId, error.getMessage()));
+    }
+
+    /**
+     * Get statistics for a specific queue (time-series from Stats API)
      *
      * @param environmentId Environment ID
      * @param region Region name

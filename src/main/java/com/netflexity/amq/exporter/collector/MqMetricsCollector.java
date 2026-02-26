@@ -157,11 +157,33 @@ public class MqMetricsCollector {
     }
 
     /**
-     * Collect metrics for a single queue
+     * Collect metrics for a single queue.
+     * Uses Admin API for real-time depth (messagesInQueue, messagesInFlight)
+     * and Stats API for throughput metrics (sent, received, acked).
      */
     private Mono<Void> collectSingleQueueMetrics(Queue queue, String environmentName) {
-        return mqClient.getQueueStats(queue.getEnvironment(), queue.getRegion(), queue.getQueueId(), anypointConfig.getScrape().getPeriodSeconds())
-                .doOnNext(stats -> {
+        Mono<QueueStats> depthMono = mqClient.getQueueDepth(queue.getEnvironment(), queue.getRegion(), queue.getQueueId())
+                .onErrorResume(error -> {
+                    log.warn("Failed to get real-time depth for queue {}, falling back to stats API: {}", queue.getQueueId(), error.getMessage());
+                    return Mono.empty();
+                });
+        
+        Mono<QueueStats> statsMono = mqClient.getQueueStats(queue.getEnvironment(), queue.getRegion(), queue.getQueueId(), anypointConfig.getScrape().getPeriodSeconds())
+                .onErrorResume(error -> {
+                    log.warn("Failed to get stats for queue {}: {}", queue.getQueueId(), error.getMessage());
+                    return Mono.empty();
+                });
+        
+        return Mono.zip(depthMono.defaultIfEmpty(new QueueStats()), statsMono.defaultIfEmpty(new QueueStats()))
+                .doOnNext(tuple -> {
+                    QueueStats depth = tuple.getT1();
+                    QueueStats stats = tuple.getT2();
+                    // Merge: use real-time depth for queue/flight counts, stats API for throughput
+                    if (depth.getMessagesInQueue() > 0 || depth.getMessagesInFlight() > 0) {
+                        stats.setMessagesInQueue(depth.getMessagesInQueue());
+                        stats.setMessagesInFlight(depth.getMessagesInFlight());
+                    }
+                    stats.setQueueId(queue.getQueueId());
                     stats.setQueue(queue);
                     updateQueueMetrics(stats, environmentName);
                     updateQueueInfoMetrics(queue, environmentName);
