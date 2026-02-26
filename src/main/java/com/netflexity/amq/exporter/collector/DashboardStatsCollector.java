@@ -159,10 +159,9 @@ public class DashboardStatsCollector {
                 .header("Authorization", "Bearer " + accessToken)
                 .header("X-ANYPNT-ENV-ID", environment.getId())
                 .retrieve()
-                .bodyToMono(ApplicationsListResponse.class)
-                .map(response -> response.getApplications().stream()
-                        .map(app -> app.getDomain())
-                        .toList());
+                .bodyToFlux(ApplicationInfo.class)
+                .map(ApplicationInfo::getDomain)
+                .collectList();
     }
 
     /**
