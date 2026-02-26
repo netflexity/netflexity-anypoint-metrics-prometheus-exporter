@@ -3,6 +3,7 @@ package com.netflexity.amq.exporter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
@@ -31,6 +32,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @version 1.0.0
  */
 @SpringBootApplication
+@ComponentScan(basePackages = {"com.netflexity.amq.exporter", "com.netflexity.anypoint.common"})
 @EnableScheduling
 @Slf4j
 public class Application {

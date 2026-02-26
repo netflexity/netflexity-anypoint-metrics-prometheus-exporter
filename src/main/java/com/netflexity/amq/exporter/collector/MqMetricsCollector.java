@@ -1,9 +1,13 @@
 package com.netflexity.amq.exporter.collector;
 
 import com.netflexity.amq.exporter.client.AnypointMqClient;
-import com.netflexity.amq.exporter.config.AnypointConfig;
-import com.netflexity.amq.exporter.config.ExporterConfig;
-import com.netflexity.amq.exporter.model.*;
+import com.netflexity.anypoint.common.config.AnypointConfig;
+import com.netflexity.anypoint.common.config.ExporterConfig;
+import com.netflexity.anypoint.common.monitor.MetricsProvider;
+import com.netflexity.anypoint.common.model.Queue;
+import com.netflexity.anypoint.common.model.QueueStats;
+import com.netflexity.amq.exporter.model.Exchange;
+import com.netflexity.amq.exporter.model.ExchangeStats;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Timer;
@@ -34,7 +38,7 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 @Component
 @Slf4j
-public class MqMetricsCollector {
+public class MqMetricsCollector implements MetricsProvider {
 
     private final AnypointMqClient mqClient;
     private final AnypointConfig anypointConfig;
@@ -357,6 +361,7 @@ public class MqMetricsCollector {
     /**
      * Get current queue stats (for monitor integration)
      */
+    @Override
     public Map<String, QueueStats> getCurrentQueueStats() {
         return Map.copyOf(currentQueueStats);
     }

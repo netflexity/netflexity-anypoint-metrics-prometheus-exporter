@@ -1,8 +1,8 @@
 package com.netflexity.amq.exporter.collector;
 
-import com.netflexity.amq.exporter.client.AnypointAuthClient;
-import com.netflexity.amq.exporter.config.AnypointConfig;
-import com.netflexity.amq.exporter.config.ExporterConfig;
+import com.netflexity.anypoint.common.client.AnypointAuthClient;
+import com.netflexity.anypoint.common.config.AnypointConfig;
+import com.netflexity.anypoint.common.config.ExporterConfig;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;

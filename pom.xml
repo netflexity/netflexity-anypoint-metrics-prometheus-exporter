@@ -29,6 +29,13 @@
     </properties>
 
     <dependencies>
+        <!-- Anypoint Common Library -->
+        <dependency>
+            <groupId>com.netflexity.anypoint</groupId>
+            <artifactId>anypoint-common</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
         <!-- Spring Boot Starters -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

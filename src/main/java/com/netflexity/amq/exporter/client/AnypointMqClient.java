@@ -1,10 +1,11 @@
 package com.netflexity.amq.exporter.client;
 
-import com.netflexity.amq.exporter.config.AnypointConfig;
+import com.netflexity.anypoint.common.client.AnypointAuthClient;
+import com.netflexity.anypoint.common.config.AnypointConfig;
 import com.netflexity.amq.exporter.model.Exchange;
 import com.netflexity.amq.exporter.model.ExchangeStats;
-import com.netflexity.amq.exporter.model.Queue;
-import com.netflexity.amq.exporter.model.QueueStats;
+import com.netflexity.anypoint.common.model.Queue;
+import com.netflexity.anypoint.common.model.QueueStats;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
